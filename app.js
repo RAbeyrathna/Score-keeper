@@ -16,9 +16,9 @@ const resetScores = () => {
     p1Score = 0;
     p2Score = 0;
     p1CurrentScore.textContent = 0;
-    p1CurrentScore.style.color = "black";
     p2CurrentScore.textContent = 0;
-    p2CurrentScore.style.color = "black";
+    p1CurrentScore.classList.remove("has-text-success", "has-text-danger");
+    p2CurrentScore.classList.remove("has-text-success", "has-text-danger");
     isGameOver = false;
 }
 
@@ -35,8 +35,8 @@ p1Button.addEventListener('click', () => {
         p1CurrentScore.textContent = p1Score;
 
         if(p1Score === winningScore){
-            p1CurrentScore.style.color = "green";
-            p2CurrentScore.style.color = "red";
+            p1CurrentScore.classList.add("has-text-success");
+            p2CurrentScore.classList.add("has-text-danger");
             isGameOver = true;
         }
     }
@@ -48,8 +48,9 @@ p2Button.addEventListener('click', () => {
         p2CurrentScore.textContent = p2Score;
 
         if(p2Score === winningScore){
-            p1CurrentScore.style.color = "red";
-            p2CurrentScore.style.color = "green";
+            p1CurrentScore.classList.add("has-text-danger");
+            p2CurrentScore.classList.add("has-text-success");
+
             isGameOver = true;
         }
     }

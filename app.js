@@ -9,12 +9,24 @@ let p2CurrentScore = document.querySelector("#p2Score");
 let scoreSelect = document.querySelector("#winningScore");
 let resetButton = document.querySelector("#resetButton");
 
-let winningScore = parseInt(scoreSelect.options[scoreSelect.selectedIndex].value);
+let winningScore = parseInt(scoreSelect.value);
 let isGameOver = false;
 
-scoreSelect.addEventListener('click', () => {
-    winningScore = parseInt(scoreSelect.options[scoreSelect.selectedIndex].value);
-});
+const resetScores = () => {
+    p1Score = 0;
+    p2Score = 0;
+    p1CurrentScore.textContent = 0;
+    p1CurrentScore.style.color = "black";
+    p2CurrentScore.textContent = 0;
+    p2CurrentScore.style.color = "black";
+    isGameOver = false;
+}
+
+scoreSelect.addEventListener('change', function() {
+    winningScore = parseInt(this.value);
+    resetScores();
+    }
+);
 
 
 p1Button.addEventListener('click', () => {
@@ -43,12 +55,6 @@ p2Button.addEventListener('click', () => {
     }
 });
 
-resetButton.addEventListener('click', () => {
-    p1Score = 0;
-    p2Score = 0;
-    p1CurrentScore.textContent = 0;
-    p1CurrentScore.style.color = "black";
-    p2CurrentScore.textContent = 0;
-    p2CurrentScore.style.color = "black";
-    isGameOver = false;
-})
+resetButton.addEventListener('click', resetScores);
+
+

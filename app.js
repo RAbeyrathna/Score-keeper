@@ -6,10 +6,16 @@ let p2Score = 0;
 
 let p1CurrentScore = document.querySelector("#p1Score");
 let p2CurrentScore = document.querySelector("#p2Score");
+let scoreSelect = document.querySelector("#winningScore");
 let resetButton = document.querySelector("#resetButton");
 
-let winningScore = 5;
+let winningScore = parseInt(scoreSelect.options[scoreSelect.selectedIndex].value);
 let isGameOver = false;
+
+scoreSelect.addEventListener('click', () => {
+    winningScore = parseInt(scoreSelect.options[scoreSelect.selectedIndex].value);
+});
+
 
 p1Button.addEventListener('click', () => {
     if(!isGameOver){
@@ -30,8 +36,8 @@ p2Button.addEventListener('click', () => {
         p2CurrentScore.textContent = p2Score;
 
         if(p2Score === winningScore){
-            p2CurrentScore.style.color = "green";
             p1CurrentScore.style.color = "red";
+            p2CurrentScore.style.color = "green";
             isGameOver = true;
         }
     }

@@ -16,8 +16,16 @@
     <section id="main-block">
       <h1>Ping Pong Score keeper</h1>
       <h2><span id="p1Score">0</span> to <span id="p2Score">0</span></h2>
-      <!-- <p>Use the buttons below to keep score</p>
-      <p>Playing to 6</p> -->
+      <p>Use the buttons below to keep score</p>
+      <label for="score">Playing to:</label>
+      <select name="score" id="winningScore">
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select>
       <section id="scoreButtons">
         <button id="p1Button">+1 Player One</button>
         <button id="p2Button">+1 Player Two</button>

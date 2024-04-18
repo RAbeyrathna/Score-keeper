@@ -6,7 +6,8 @@ Upon reaching the target score, the buttons are disabled to prevent further scor
 
 ## Plan to do
 
-- Incorporate a "Win-by-2" functionality to conclude the game when there's a 2-point difference during a tie
+- ~~Incorporate a "Win-by-2" functionality to conclude the game when there's a 2-point difference during a tie~~
+  - Completed
 - Integrate the ability to subtract points from a specific player's score
 
 ![Image](./assets/score-keeper-screenshot.png)

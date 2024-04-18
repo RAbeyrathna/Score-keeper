@@ -9,6 +9,13 @@ const player2 = {
     button: document.querySelector("#p2Button"),
     currentScore: document.querySelector("#p2Score")
 }
+
+let scoreSelect = document.querySelector("#winningScore");
+let resetButton = document.querySelector("#resetButton");
+
+let winningScore = parseInt(scoreSelect.value);
+let isGameOver = false;
+
 function updateScores(player, opponent){
     if(!isGameOver){
         player.score += 1;      
@@ -20,15 +27,17 @@ function updateScores(player, opponent){
             isGameOver = true;
             player.button.disabled = true;
             opponent.button.disabled = true;
+            return;
+        }
+        if((player1.score === player2.score) && (player1.score === (winningScore - 1))){
+            winningScore = winningScore + 1;
+            player1.currentScore.classList.add("has-text-warning");
+            player2.currentScore.classList.add("has-text-warning");
         }
     }
 }
 
-let scoreSelect = document.querySelector("#winningScore");
-let resetButton = document.querySelector("#resetButton");
 
-let winningScore = parseInt(scoreSelect.value);
-let isGameOver = false;
 
 const resetScores = () => {
     for(let player of [player1,player2]){

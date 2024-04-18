@@ -21,18 +21,19 @@ function updateScores(player, opponent){
         player.score += 1;      
         player.currentScore.textContent = player.score;
 
+        if((player1.score === player2.score) && (player1.score === (winningScore - 1))){
+            winningScore = winningScore + 1;
+            player1.currentScore.classList.add("has-text-warning");
+            player2.currentScore.classList.add("has-text-warning");
+        }
+
         if(player.score === winningScore){
+            player.currentScore.classList.remove("has-text-warning");
             player.currentScore.classList.add("has-text-success");
             opponent.currentScore.classList.add("has-text-danger");
             isGameOver = true;
             player.button.disabled = true;
             opponent.button.disabled = true;
-            return;
-        }
-        if((player1.score === player2.score) && (player1.score === (winningScore - 1))){
-            winningScore = winningScore + 1;
-            player1.currentScore.classList.add("has-text-warning");
-            player2.currentScore.classList.add("has-text-warning");
         }
     }
 }
@@ -43,8 +44,9 @@ const resetScores = () => {
     for(let player of [player1,player2]){
         player.score = 0;
         player.currentScore.textContent = 0;
-        player.currentScore.classList.remove("has-text-success", "has-text-danger");
+        player.currentScore.classList.remove("has-text-success", "has-text-danger","has-text-warning");
         player.button.disabled = false;
+        winningScore = parseInt(scoreSelect.value);
     }
     isGameOver = false;
 }
